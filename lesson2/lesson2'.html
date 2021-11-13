@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson two</title>
+</head>
+<body>
+<script>
+
+
+    // - Дано змінну time яка рівна числу від 0 до 59. Потрібно написати код, який перевірить, до якої четверті години попадає число
+    // (в першу, другу, третю или четверту частину години).
+
+    // let time = +prompt("enter time");
+    // if (time > 0 && time <= 15) {
+    //     console.log('first quater');
+    // } else if (time > 15 && time <= 30) {
+    //     console.log('second quater');
+    // } else if (time > 30 && time <= 45) {
+    //     console.log('third quater');
+    // } else if (time > 45 && time <= 59) {
+    //     console.log('fourth quarter');
+    // }
+    // //
+    //
+    // let day = +prompt("enter number");
+    // if (day > 0 && day <= 10) {
+    //     document.write('<h1>first decade</h1>');
+    // } else if (day > 10 && day <= 20) {
+    //     document.write('<h2>second decade</h2>');
+    // } else if (day > 20 && day <= 31) {
+    //     document.write('<h3>third decade</h3>');
+    // }
+
+
+
+
+
+
+    // - У змінній day дано якесь число від 1 до 31. Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю).
+
+    // let test =(!!0);
+    // if (test !== true) {
+    //     document.write('<h2>Вірно</h2>');
+    // } else
+    // {
+    //     document.write('<h2>Неправильно</h2>');
+    // }
+
+   //  let test =(!!0);
+   // let asd= test !== true ? 'Вірно' : 'Неправильно';
+   //  document.write(asd);
+
+
+
+
+
+
+
+    // - У нас є змінна test, якщо  не дорівнює true, виведіть 'Вірно', інакше виведіть 'Неправильно'.
+    //     Перевірте роботу скрипта при test, що дорівнює true, false. Напишіть два варіанти скрипта - з коротким записом(тернаркою)
+
+
+    // let test2 =(!!'LOGO');
+    // if (test2 !== true) {
+    //     document.write('<h2>Вірно</h2>');
+    // } else
+    // {
+    //     document.write('<h2>Неправильно</h2>');
+    // }
+
+    // ----------ТЕРНАРКА---------------
+    // let test2 =(!!'LOGO');
+    // let asd2 = test2 !== true ? 'Вірно' : 'Неправильно';
+    // document.write(asd2);
+
+
+
+
+
+
+    // - Якщо змінна a не дорівнює нулю, виведіть 'Вірно', інакше виведіть 'Невірно'. Перевірте  скрипт при a, що дорівнює 1, 0, -3
+
+    // let a = 1;
+    // if (a!==0) {
+    //     document.write('<h2>Вірно</h2>');
+    // } else
+    // {
+    //     document.write('<h2>Невірно</h2>');
+    // }
+    //
+    // let a2 = 0;
+    // if (a2!==0) {
+    //     document.write('<h2>Вірно</h2>');
+    // } else
+    // {
+    //     document.write('<h2>Невірно</h2>');
+    // }
+    // let a3 = (-3);
+    // if (a3!==0) {
+    //     document.write('<h2>Вірно</h2>');
+    // } else
+    // {
+    //     document.write('<h2>Невірно</h2>');
+    // }
+
+
+
+
+
+
+    // - Скласти розклад на тиждень за домопоги switch. Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день.
+
+    // let i = "";
+    // switch (i) {
+    //     case '1':
+    //         document.write('<h2>Прочитати книгу</h2></br>')
+    //         document.write('<h2>Зустріти родичів</h2>')
+    //         break;
+    //     case '2':
+    //         document.write('<h2>Сходити на курси</h2></br>')
+    //         document.write('<h2>Зробити домашні справи</h2>')
+    //         break;
+    //     case '3':
+    //         document.write('<h2>Вигуляти пса</h2></br>')
+    //         document.write('<h2>Забрати посилку</h2>')
+    //         break;
+    //     case '4':
+    //         document.write('<h2>Сходити на курси</h2></br>')
+    //         document.write('<h2>Виконати завдання проекту</h2>')
+    //         break;
+    //     case '5':
+    //         document.write('<h2>Зустрітися з друзями</h2></br>')
+    //         document.write('<h2>Написати резюме</h2>')
+    //         break;
+    //     case '6':
+    //         document.write('<h2>Пошпаклювати стіну</h2></br>')
+    //         document.write('<h2>Приготувати їсти</h2>')
+    //         break;
+    //     case '7':
+    //         document.write('<h2>Сходити на курси</h2></br>')
+    //         document.write('<h2>Записатися до перукаря</h2>')
+    //         break;
+    //     default:
+    //         document.write('<h2>Інформація не має відображення</h2>')
+    // }
+
+
+
+
+    // - Потрібно визначити Високосний рік чи ні. Високосні роки діляться націло на 4.
+
+    // let year = 2021;
+    // let a = (2021 % 4);
+    // if (a === 1) {
+    //     document.write("Не високосний рік");
+    // }
+    // else if (a === 0) {
+    //     document.write("Високосний рік");
+    // }
+
+
+
+
+
+
+
+
+    // - Використовуючи конструкцію if..else, напишіть код, який запитуватиме: „Яка «офіційна» назва JavaScript?“
+// Якщо користувач вводить «ECMAScript», то показати: «Правильно!», інакше – відобразити: «Не знаєте? ECMAScript!
+
+//     let JavaScript = prompt("Яка «офіційна» назва JavaScript?");
+// if (JavaScript === 'ECMAScript') {
+//     alert('Правильно!')
+//     }
+// else (
+//     alert('Не знаєте? ECMAScript!')
+// )
+
+
+</script>
+</body>
+</html>
