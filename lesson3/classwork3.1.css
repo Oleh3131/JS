@@ -1,0 +1,57 @@
+
+
+/*.mainOne {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 1000px;*/
+/*    row-gap: 50px;*/
+/*}*/
+/*.mainOne>img{*/
+/*    width: 200px;*/
+/*}*/
+
+
+/*--------------------------------------------------*/
+
+
+
+/*.mainInfo {*/
+/*    padding: 25px;*/
+/*    border: 2px solid #ffdd00;*/
+/*}*/
+
+
+/*.mainInfo>img {*/
+/*    height: 300px;*/
+/*    margin-left: 600px;*/
+/*}*/
+
+/*.mainInfo>p {*/
+/*    font-size: 18px;*/
+/*    line-height: 26px;*/
+/*    text-align: justify;*/
+/*}*/
+/*.mainInfo>h2{*/
+/*text-align: center;*/
+/*}*/
+
+
+/*----------------------------------------------------*/
+
+
+/*.product-card {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    text-align: center;*/
+/*    padding: 25px;*/
+/*    border: 5px solid #53d5f6;*/
+/*}*/
+
+/*.product-card>img{*/
+/*  width: 300px;*/
+/*    margin-left: 575px;*/
+/*}*/
+
+/*.product-card>h3 {*/
+/*    font-size: 24px;*/
+/*}*/
