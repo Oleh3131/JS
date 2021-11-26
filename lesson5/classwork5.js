@@ -158,14 +158,15 @@
 //  (цей код генерує рандомні числа в діапазоні від 0 до 100 - Math.round(Math.random()*100)) та виводить його.
 
 // let random = () => {
+//     let n= [];
 //     for (let i=0;i<10;i++) {
-//         let arguments = Math.round(Math.random() * 100)
-//         console.log(arguments);
+//         n[i] = Math.round(Math.random() * 100);
 //     }
+//     return n;
 // };
-// random();
+// console.log(random());
 //
-
+//
 
 
 // ----------------------------------------------------------------------------------------------------------------------------
