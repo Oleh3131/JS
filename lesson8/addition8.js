@@ -4,9 +4,13 @@ function recall(startEvent) {
     let arrayNew = [];
     if (startEvent.children.length) {
         for (let element of startEvent.children) {
-            if (element.getAttribute('class')) {
-                arrayNew=element.getAttribute('class');
-                console.log(arrayNew);
+            if (element.getAttribute('class')){
+                let splitNew = element.getAttribute('class').split(' ');
+                let mainArray = arrayNew.concat(splitNew);
+                arrayNew = mainArray;
+                if (arrayNew.length >= 16) {
+                    console.log(arrayNew)
+                }
             }
             recall(element);
         }
