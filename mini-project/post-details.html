@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>post-details</title>
+</head>
+<style>
+    /*// Стилизация проекта -*/
+    /*// index.html - все блоки с user - по 2 в ряд. кнопки/ссылки находяться под информацией про user.*/
+    /*// user-details.html - блок с информацией про user вверху страницы. Кнопка ниже, на 90% ширины страницы, по центру.*/
+    /*// блоки с краткой информацией про post - в ряд по 5 объектов.*/
+    /*// post-details.html - блок с информацией про пост вверху. Комментарии - по 4 в ряд.*/
+    /*// Все без исключения элементы, который характеризируют user,post,comment  визуализировать, так,*/
+    /*// что бы было видно их блоки (дать задний фон + margin. Иными словами - крайне четкая сетка)*/
+
+    * {
+        margin: 0;
+        padding: 0;
+        background:ivory;
+    }
+
+    .comments {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: ivory;
+    }
+
+    .post_main_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+        border: 2px solid #e7d14c;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    h2,h4,h5,p {
+        margin-top: 10px;
+    }
+
+    .button_click {
+        width: 90%;
+        margin-top: 25px;
+        height: 30px;
+        cursor: pointer;
+        background: #fff2c0;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+
+    .comment_main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    .info_comment {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 220px;
+        height: 350px;
+        margin-top: 20px;
+        padding: 20px;
+        border: 2px solid #e7d14c;
+        border-radius: 5px;
+        font-style: italic;
+    }
+
+
+
+</style>
+<body>
+<script>
+    let postNew = JSON.parse(localStorage.getItem('postNew'));
+    let comment_mainDiv = document.createElement('div');
+    comment_mainDiv.classList.add('comments');
+    for (let infoPost of postNew) {
+        let infoDiv = document.createElement('div');
+        let infoButton = document.createElement('button');
+
+        infoButton.classList.add('button_click');
+        infoDiv.classList.add('post_main_info');
+
+        infoButton.innerText = 'comments';
+        infoDiv.innerHTML =
+            `<h2>userId: ${infoPost.userId}</h2>
+                             <h4>id: ${infoPost.id}</h4>
+                             <h4>title: ${infoPost.title}</h4>
+                             <h5>body: ${infoPost.body}</h5>`;
+
+
+        infoButton.onclick = function () {
+            fetch('https://jsonplaceholder.typicode.com/comments')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((comments) => {
+                    let com_Div = document.createElement('div');
+
+                    com_Div.classList.add('comment_main');
+
+                    for (let comment of comments) {
+
+                        if (infoPost.userId === comment.postId) {
+
+                            let com_Div_two = document.createElement('div');
+
+                            com_Div_two.innerHTML =
+                                                    `<h2>postId: ${comment.postId}</h2>
+                                                     <h4>id: ${comment.id}</h4>
+                                                     <h4>name: ${comment.name}</h4>
+                                                     <h4>email: ${comment.email}</h4>
+                                                      <p>body: ${comment.body}</p>`;
+
+                            com_Div_two.classList.add('info_comment');
+                            if (com_Div.style.display='flex') {
+                                infoButton.onclick = function () {
+                                    com_Div.style.display = 'none';
+
+                                };
+                            }
+
+                            com_Div.appendChild(com_Div_two);
+                            comment_mainDiv.appendChild(com_Div);
+
+
+                        }
+                    }
+                });
+        };
+
+
+        infoDiv.appendChild(infoButton);
+        comment_mainDiv.appendChild(infoDiv);
+        document.body.appendChild(comment_mainDiv);
+
+
+    }
+</script>
+</body>
+</html>

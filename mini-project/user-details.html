@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>user-details</title>
+</head>
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        background:ivory;
+    }
+
+    .post_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: ivory;
+    }
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        margin: 20px;
+        padding: 20px;
+        border: 2px solid #e7d14c;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
+    h2,h4,ul {
+        margin-top: 10px;
+    }
+
+.post_button {
+    width: 90%;
+    margin-top: 15px;
+    height: 25px;
+    cursor: pointer;
+    background: #fff2c0;
+    border-radius: 10px;
+}
+
+.post_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 120px;
+    margin: 20px;
+    border: 2px solid #e7d14c;
+    border-radius: 5px;
+}
+.info_button {
+    width: 80px;
+    height: 25px;
+    margin-top: 10px;
+    background: #fff2c0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+</style>
+<body>
+<script>
+
+    let valueNew = JSON.parse(localStorage.getItem('userNew'));
+    let postDiv = document.createElement('div');
+    postDiv.classList.add('post_info');
+    for (let newValue of valueNew) {
+        let userDiv = document.createElement('div');
+        let postButton = document.createElement('button');
+        postButton.innerText = "post of current user";
+
+        userDiv.classList.add('user');
+        postButton.classList.add('post_button');
+
+        userDiv.innerHTML =
+            `<h2>id: ${newValue.id}</h2>
+            <h4>name: ${newValue.name}</h4>
+            <h4>username: ${newValue.username}</h4>
+            <h4>email: ${newValue.email}</h4>
+            <ul>address:
+                <li>street: ${newValue.address.street}</li>
+                <li>suite: ${newValue.address.suite}</li>
+                <li>city: ${newValue.address.city}</li>
+                <li>zipcode: ${newValue.address.zipcode}</li>
+                    <ul>geo:
+                        <li>lat: ${newValue.address.geo.lat}</li>
+                        <li>lng: ${newValue.address.geo.lng}</li></ul>
+                    </ul>
+                <h4>phone: ${newValue.phone}</h4>
+                <h4>website: ${newValue.website}</h4>
+                    <ul>company:
+                        <li>name: ${newValue.company.name}</li>
+                        <li>catchPhrase: ${newValue.company.catchPhrase}</li>
+                        <li>bs: ${newValue.company.bs}</li>
+                    </ul>`;
+
+        postButton.onclick = function () {
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((posts) => {
+                    let main_Div = document.createElement('div');
+                    main_Div.classList.add('post_main');
+                    for (let post of posts) {
+                        if (newValue.id === post.userId) {
+                            let postDivTwo = document.createElement('div');
+                            let postForm = document.createElement('form');
+                            let postDetailsButton = document.createElement('button');
+                            postDetailsButton.classList.add('info_button');
+
+                            postDetailsButton.innerText = `click me`;
+                            postDivTwo.classList.add('post');
+                            postDivTwo.innerText = `title: "${post.title}"`;
+                            postForm.setAttribute('action', "post-details.html");
+
+                            postDetailsButton.onclick = function () {
+                                let postInformation = JSON.parse(localStorage.getItem('postInformation')) || [];
+                                postInformation.push(post);
+                                localStorage.setItem('postNew', JSON.stringify(postInformation));
+                            }
+
+                            postForm.appendChild(postDetailsButton);
+                            postDivTwo.appendChild(postForm);
+                            main_Div.appendChild(postDivTwo);
+                            postDiv.appendChild(main_Div);
+
+                            if (postDiv.style.display = 'block') {
+                                postButton.onclick = function () {
+                                    main_Div.style.display = 'none';
+
+                                };
+                            }
+                        }
+
+                    }
+                });
+        };
+
+        userDiv.appendChild(postButton);
+        postDiv.appendChild(userDiv);
+        document.body.appendChild(postDiv);
+    }
+
+
+</script>
+
+
+</body>
+</html>
